@@ -32,3 +32,43 @@ echo "Place your files in /sdcard/htdocs"
 echo "Run apachectl"
 
 #apachectl
+
+echo "install mariadb"
+pkg install mariadb -y
+
+echo "usu database mysql"
+mysql -u $(whoami) -e "use mysql"
+
+echo "change root password to 123456"
+mysql -u $(whoami) -e "set password for 'root'@'localhost' = password('123456');"
+
+echo "grand all privileges"
+mysql -u $(whoami) -e "flush privileges;"
+
+echo "install wget"
+pkg install wget -y
+
+echo "install unzip"
+pkg install unzip -y
+
+echo "download phpmyadmin"
+wget https://files.phpmyadmin.net/phpMyAdmin/5.1.2/phpMyAdmin-5.1.2-english.zip
+Kit
+
+echo "unzip phpmyadmin"
+unzip phpMyAdmin-5.1.2-english.zip
+
+echo "rename to phpmyadmin"
+mv phpMyAdmin-5.1.2-english phpmyadmin
+
+echo "hapus phpmyadmin zip"
+rm -rf phpMyAdmin-5.1.2-english.zip
+
+echo "pindah ke htdocs"
+mv phpmyadmin "$htdocs"
+
+echo "pindah setup phpmyadmin ke htdocs"
+cp config.inc.php "$htdocs/phpmyadmin"
+
+echo "start apache"
+apachectl
