@@ -26,15 +26,14 @@ chmod +x apachectl
 
 mv apachectl $PREFIX/bin/
 
-echo "PHP and Apache2 Installed Sucessfully..."
-echo "/sdcard/htdocs - is your document directory.."
-echo "Place your files in /sdcard/htdocs"
-echo "Run apachectl"
-
-#apachectl
-
 echo "install mariadb"
 pkg install mariadb -y
+
+echo "run mysql"
+mysqld_safe
+
+echo "stope mysql"
+service mysql stop
 
 echo "usu database mysql"
 mysql -u $(whoami) -e "use mysql"
@@ -70,5 +69,11 @@ mv phpmyadmin "$htdocs"
 echo "pindah setup phpmyadmin ke htdocs"
 cp config.inc.php "$htdocs/phpmyadmin"
 
-echo "start apache"
-apachectl
+echo "start apache"                                             apachectl
+
+echo "PHP and Apache2 Installed Sucessfully..."
+echo "/sdcard/htdocs - is your document directory.."
+echo "Place your files in /sdcard/htdocs"
+echo "phpmyadmin username: root"
+echo "phpmyadmin password: 123456"
+
