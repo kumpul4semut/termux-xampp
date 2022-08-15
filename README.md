@@ -1,26 +1,8 @@
-Repositori untuk setup PHP dan Apache2 di android menggunakan Termux.
+Repositori for install apache, mysql, php and phpmyadmin on termux.
 
 ## Instalasi
-Untuk instalasi php dan apache2. Buka termux, lalu run command ini:
+Form instalation in termux, run command below:
 
 ```
-pkg install git -y && cd ~/ && git clone https://github.com/doublegunz/termux-php-apache2-setup.git && cd ~/termux-php-apache2-setup && bash setup && cd ~/ && rm -rf termux-php-apache2-setup
+pkg install git -y && cd ~/ && git clone https://github.com/kumpul4semut/termux-xampp.git && cd ~/termux-xampp && bash setup && cd ~/ && rm -rf termux-xampp
 ```
-## Test Instalasi
-Cek versi php:
-```
-php -v
-```
-![cek versi php](image/check-php-version.png)
-
-Untuk menguji apakah PHP bisa  dirunning. Buat file index.php:
-```
-echo "<?php phpinfo();?>" > storage/shared/htdocs/index.php
-```
-
-start server:
-```
-apachectl
-```
-
-![tes running server](image/tes-run.png)
