@@ -1,1 +1,1 @@
-<?php echo "installation tampp from kumpul4semu successfully! happy hacking :)" ?>
+<?php echo "termux-xampp successfully installed happy hacking :)" ?>
