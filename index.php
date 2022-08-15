@@ -1,0 +1,1 @@
+<?php echo "installation tampp from kumpul4semu successfully! happy hacking :)" ?>

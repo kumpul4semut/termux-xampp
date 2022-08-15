@@ -29,18 +29,6 @@ mv apachectl $PREFIX/bin/
 echo "install mariadb"
 pkg install mariadb -y
 
-echo "run mysql"
-mysqld_safe -u root &
-
-echo "use database mysql"
-mysql -u $(whoami) -e "use mysql"
-
-echo "change root password to 123456"
-mysql -u $(whoami) -e "set password for 'root'@'localhost' = password('123456');"
-
-echo "grand all privileges"
-mysql -u $(whoami) -e "flush privileges;"
-
 echo "install wget"
 pkg install wget -y
 
@@ -66,11 +54,15 @@ mv phpmyadmin "$htdocs"
 echo "pindah setup phpmyadmin ke htdocs"
 cp config.inc.php "$htdocs/phpmyadmin"
 
+echo "pindah setup phpmyadmin ke htdocs"
+cp index.php "$htdocs"
+
 echo "PHP and Apache2 Installed Sucessfully..."
 echo "/sdcard/htdocs - is your document directory.."
 echo "Place your files in /sdcard/htdocs"
-echo "phpmyadmin username: root"
-echo "phpmyadmin password: 123456"
+
+echo "run mysql"
+mysqld_safe
 
 echo "start apache"                                            
 apachectl
